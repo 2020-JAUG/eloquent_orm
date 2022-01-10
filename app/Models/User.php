@@ -65,4 +65,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Level::class, 'level', 'id');
     }
+
+    /**
+     * Un usuario pertenece a un grupo y puede tener muchos grupos
+     * El timestamps es para que no se queden los campos vacios de la fecha de creación en la tabla group_user
+     * @return void
+     */
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class)->withTimestamps();
+    }
 }
