@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupUserTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateGroupUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_user', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group')->nullable();
             $table->unsignedBigInteger('user')->nullable();
+            $table->text('body');
+            $table->morphs('commentable');
+            $table->softDeletes();
+            $table->timestamps();
 
-            $table->foreign('group')->references('id')->on('groups');
             $table->foreign('user')->references('id')->on('users');
         });
     }
@@ -30,6 +32,6 @@ class CreateGroupUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_user');
+        Schema::dropIfExists('comments');
     }
 }
