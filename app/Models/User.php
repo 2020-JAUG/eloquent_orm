@@ -47,7 +47,6 @@ class User extends Authenticatable
 
     /**
      * Un usuario tiene un perfil
-     * Undocumented function
      *
      * @return void
      */
@@ -74,5 +73,54 @@ class User extends Authenticatable
     public function groups()
     {
         return $this->belongsToMany(Group::class)->withTimestamps();
+    }
+
+    /**
+     * Obtengo una localización del user a travéz de perfil
+     * @return void
+     */
+    public function location()
+    {
+        return $this->hasOneThrough(Location::class, Profile::class);
+    }
+
+    /**
+     * Un user tiene muchos posts
+     *
+     * @return void
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'user', 'id');
+    }
+
+    /**
+     * Un user puede tener muchos vídeos
+     *
+     * @return void
+     */
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'user', 'id');
+    }
+
+    /**
+     * Un user puede tener muchos comentarios
+     *
+     * @return void
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'user', 'id');
+    }
+
+    /**
+     * Un user tiene una imagen de perfil
+     *
+     * @return void
+     */
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }
