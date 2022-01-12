@@ -22,4 +22,25 @@ class Level extends Model
     {
         return $this->hasMany(User::class, 'level', 'id');
     }
+
+    /**
+     * OPTIMIZANDO LA CONSULTA
+     * Un nivel tiene post a travéz de user
+     * Para consultar a los user, filtrar por un nivel y traer sus posts
+     * @return void
+     */
+    public function posts()
+    {
+        return $this->hasManyThrough(Post::class, User::class);
+    }
+
+    /**
+     * Un nivel tiene muchos vídeos a travéz de user
+     * OPTIMIZANDO LA CONSULTA
+     * @return void
+     */
+    public function videos()
+    {
+        return $this->hasManyThrough(Video::class, User::class);
+    }
 }
