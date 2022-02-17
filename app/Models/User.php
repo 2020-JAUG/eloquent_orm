@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class, 'user', 'id');
+        return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
     /**
@@ -62,12 +62,13 @@ class User extends Authenticatable
      */
     public function level()
     {
-        return $this->belongsTo(Level::class, 'level', 'id');
+        return $this->belongsTo(Level::class, 'level_id', 'id');
     }
 
     /**
      * Un usuario pertenece a un grupo y puede tener muchos grupos
      * El timestamps es para que no se queden los campos vacios de la fecha de creación en la tabla group_user
+     * Lo borre en la tabla pivote
      * @return void
      */
     public function groups()
@@ -91,7 +92,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany(Post::class, 'user', 'id');
+        return $this->hasMany(Post::class, 'user_id', 'id');
     }
 
     /**
@@ -101,7 +102,7 @@ class User extends Authenticatable
      */
     public function videos()
     {
-        return $this->hasMany(Video::class, 'user', 'id');
+        return $this->hasMany(Video::class, 'user_id', 'id');
     }
 
     /**
@@ -111,7 +112,7 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'user', 'id');
+        return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 
     /**

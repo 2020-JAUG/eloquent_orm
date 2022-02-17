@@ -20,6 +20,6 @@ class Profile extends Model
      */
     public function location()
     {
-        return $this->hasOne(Location::class, 'profile', 'id');
+        return $this->hasOne(Location::class, 'profile_id', 'id');
     }
 }
