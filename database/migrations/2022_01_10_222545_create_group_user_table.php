@@ -15,11 +15,11 @@ class CreateGroupUserTable extends Migration
     {
         Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('group')->nullable();
-            $table->unsignedBigInteger('user')->nullable();
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->foreign('group')->references('id')->on('groups');
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

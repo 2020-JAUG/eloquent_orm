@@ -15,12 +15,12 @@ class CreateTaggablesTable extends Migration
     {
         Schema::create('taggables', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tag')->nullable();
+            $table->unsignedBigInteger('tag_id')->nullable();
             $table->morphs('taggable');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('tag')->references('id')->on('tags');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 

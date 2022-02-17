@@ -15,12 +15,12 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('profile')->nullable();
+            $table->unsignedBigInteger('profile_id')->nullable();
             $table->string('country');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('profile')->references('id')->on('profiles');
+            $table->foreign('profile_id')->references('id')->on('profiles');
         });
     }
 

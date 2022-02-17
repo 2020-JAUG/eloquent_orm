@@ -15,14 +15,14 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category')->nullable();
-            $table->unsignedBigInteger('user')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('category')->references('id')->on('categories');
-            $table->foreign('user')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
