@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageFactory extends Factory
 {
+    protected $Group = Image::class;
+
     /**
      * Define the model's default state.
      *
@@ -15,7 +18,7 @@ class ImageFactory extends Factory
     {
         return [
             'url' => $this->faker->imageUrl(1024, 1024),
-            'imageable' => $this->faker->randomDigit(1,5)
+            'imageable' => $this->faker->randomDigit(1, 5)
         ];
     }
 }

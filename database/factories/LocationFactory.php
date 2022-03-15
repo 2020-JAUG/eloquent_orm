@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Location;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LocationFactory extends Factory
@@ -17,7 +18,8 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
-            'country' => $this->faker->country()
+            'country' => $this->faker->country(),
+            'profile_id' => Profile::all()->random()->id
         ];
     }
 }

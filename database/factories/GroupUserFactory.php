@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProfileFactory extends Factory
+class GroupUserFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +16,7 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'instagram' => $this->faker->userName(),
-            'github' => $this->faker->userName(),
-            'web' => $this->faker->url(),
+            'group_id' => Group::all()->random()->id,
             'user_id' => User::all()->random()->id
         ];
     }
