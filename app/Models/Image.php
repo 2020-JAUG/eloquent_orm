@@ -19,6 +19,13 @@ class Image extends Model
      * (Transoformar Á) ---> Se usará con: user, vídeos, posts
      * @return void
      */
+
+
+    /**
+     * imageable
+     *
+     * @return reponse
+     */
     public function imageable()
     {
         return $this->morphTo();
