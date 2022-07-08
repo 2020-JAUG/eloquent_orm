@@ -10,7 +10,7 @@ class CategoryFactory extends Factory
     protected $Group = Category::class;
 
     /**
-     * Define the model's default state.
+     * Define the model's default state
      *
      * @return array
      */
